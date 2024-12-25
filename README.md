@@ -1,20 +1,6 @@
-## 🤝 Contributing
-
-**We welcome contributions from the community to help enhance GraphRAG Local Ollama! Please see our [Contributing Guidelines](CONTRIBUTING.md) for more details on how to get involved.**
-
-Need support for llama integration.
-
-# 🚀 GraphRAG Local Ollama - Knowledge Graph
-
-Welcome to **GraphRAG Local Ollama**! This repository is an exciting adaptation of Microsoft's [GraphRAG](https://github.com/microsoft/graphrag), tailored to support local models downloaded using Ollama. Say goodbye to costly OpenAPI models and hello to efficient, cost-effective local inference using Ollama!
-
-## 📄 Research Paper
+# 1. GraphRAG-Ollama
 
 For more details on the GraphRAG implementation, please refer to the [GraphRAG paper](https://arxiv.org/pdf/2404.16130).
-
-**Paper Abstract**
-
-The use of retrieval-augmented generation (RAG) to retrieve relevant information from an external knowledge source enables large language models (LLMs)to answer questions over private and/or previously unseen document collections.However, RAG fails on global questions directed at an entire text corpus, suchas “What are the main themes in the dataset?”, since this is inherently a queryfocused summarization (QFS) task, rather than an explicit retrieval task. PriorQFS methods, meanwhile, fail to scale to the quantities of text indexed by typicalRAG systems. To combine the strengths of these contrasting methods, we proposea Graph RAG approach to question answering over private text corpora that scaleswith both the generality of user questions and the quantity of source text to be indexed. Our approach uses an LLM to build a graph-based text index in two stages:first to derive an entity knowledge graph from the source documents, then to pregenerate community summaries for all groups of closely-related entities. Given aquestion, each community summary is used to generate a partial response, beforeall partial responses are again summarized in a final response to the user. For aclass of global sensemaking questions over datasets in the 1 million token range,we show that Graph RAG leads to substantial improvements over a na¨ıve RAGbaseline for both the comprehensiveness and diversity of generated answers. 
 
 ## 🌟 Features
 
@@ -117,12 +103,62 @@ Pass the path to the .graphml file to the below line in visualize-graphml.py:
     ```
 
 
-
-## Citations
-
 - Original GraphRAG repository by Microsoft: [GraphRAG](https://github.com/microsoft/graphrag)
 - Ollama: [Ollama](https://ollama.com/)
 
----
 
-By following the above steps, you can set up and use local models with GraphRAG, making the process more cost-effective and efficient.
+# 2. API_qwen Project
+
+## Project Overview
+API_qwen is a project that utilizes Alibaba's qwen large model for data preprocessing. The project aims to clean news text data by calling the qwen_Turbo API, thereby enhancing data quality and preparing it for subsequent data analysis and machine learning tasks.
+
+## Features
+- Reads news text data from `input.txt`.
+- Calls the qwen_Turbo API for data preprocessing.
+- Outputs the cleaned news text to `cleaned_output.txt`.
+
+## Installation
+Ensure you have Python installed and the following dependencies:
+
+```bash
+pip install requests
+```
+
+Configuration
+Before running the project, make sure you have set up the following environment variables:
+QWEN_API_KEY: Your qwen_Turbo API key.
+QWEN_API_ENDPOINT: The endpoint URL of the qwen_Turbo API.
+
+Usage
+Save the news text data that needs cleaning to input.txt, then run the following command:
+python qwen_text_from_file.py
+The project will automatically call the qwen_Turbo API and output the cleaned text to cleaned_output.txt.
+
+# 3.Firecrawl Project
+
+## Project Overview
+Firecrawl is a Python-based project designed to crawl text data from target web pages by utilizing the Firecrawl API. It allows users to specify the URLs and CSS elements of the web pages they wish to scrape, and it outputs the crawled data in a structured format.
+
+## Features
+- Crawls text data from specified web pages.
+- Accepts URLs and CSS selectors as input.
+- Outputs crawled data in a file for further processing.
+
+## Technology Stack
+- Python
+- Firecrawl API
+
+## Installation
+To get started with Firecrawl, ensure you have Python installed on your system.
+
+Configuration
+Before running the crawler, you need to prepare an input.txt file that contains the URLs and CSS elements you want to scrape.
+
+Usage
+To run the Firecrawl program, execute the following command in your terminal:
+python crawl.py
+
+The program will read the input.txt file, crawl the specified web pages, and output the crawled data to already_crawled.txt, which can then be used as input for the qwen_API project for data cleaning.
+
+Authors
+HUANG Haoyu, QI Xixian, WANG Mingshuo, WU Siyuan, YANG Junjie
