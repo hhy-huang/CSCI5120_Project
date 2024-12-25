@@ -1,0 +1,17 @@
+通义千问对API方式的调用限制为每分钟60次以内，每分钟token数15万以内
+
+qwen_text_argparse.py
+    This script shows an example of how the 'qwen' command-line parser can be used to parse
+    a text command-line argument using standard Python syntax.
+    使用方法: python your_script.py "你是谁？"
+
+qwen_text.py
+    使用方法: 运行该文件在输入框输入问题
+
+qwen_text_from_file.py
+    使用方法: 在input.txt中输入需要被清洗的文本，在该文件中输入prompt，每5000个字符作为一组，
+    qwen-plus处理一组大约需要100s，qwen-turbo-latest大约每分钟处理18000字符
+    因此对于全部的ETH新闻共203420字符，全部处理大约需要15~20min
+    #例：输入26800字符，大模型清洗输出20400字符，cleaned-output输出20300字符
+
+    

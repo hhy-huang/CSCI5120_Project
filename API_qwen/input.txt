@@ -1,0 +1,57 @@
+Techniques for constructing knowledge graphs (KGs) have been a long-lasting research trend.
+In recent years, academic communities have seen substantial literature publications presenting
+KG construction techniques [1][2][3][4][5], along with emerging applications of KG construction
+covering tasks of recommendation systems [6], dialogue systems [7], and fake news detection [8]
+et al. KG construction techniques have been recognized as the paving stone for AI [4].
+Trustworthy knowledge graphs provide well-organized human knowledge as auxiliary information
+to enable knowledge awareness. However, many high-quality KG systems have relied on
+crowd-sourcing strategies for construction, like Freebase [9] and Wikidata [10]. Hence, a systematic
+solution that can automatically build a knowledge graph from unstructured or semi-structured
+data offers a massive boost to what is a very arduous manual process for practical purposes.
+A knowledge graph is defined as a semantic graph consisting of edges and nodes that depicts
+knowledge of real-world objects. Within these structures, a knowledge tuple is the minimum
+knowledge-carrying group. The tuples comprise two nodes representing concepts connected by an
+edge representing a relationship. Thus, constructing a knowledge graph is the task of discovering
+the elements that constitute a knowledge graph in a domain-specific or open-domain area. Early
+in the study of this discipline, researchers were mostly focusing on scratching out factual tuples
+from semi-structured or unstructured textual data as patterned knowledge mentions. Information
+extraction systems like TextRunner [11] and Knowitall [12] are themilestones for early knowledge
+graph construction, driven by designated rules or clustering. Unfortunately, these designs are not
+sufficiently equipped with background knowledge, and thus suffer from two major defects: (1) insubstantial,
+traditional information extraction systems do not create or distinguish entities from
+different expressions, which prevents knowledge aggregation; (2) uninformative, traditional information
+extraction systems only extract information from syntactic structures without capturing
+the semantic denotations in the given expressions. Furthermore, conventional rule-based information
+extraction systems also require heavy feature engineering and extra expert knowledge.
+Wu et al. [13] point out that if a KG system does not organize nodes and edges with background
+knowledge about concepts, it is merely a data graph.
+Regarding this issue, researchers then recourse to well-partitioned acquisition sub-tasks for arranging
+semantic knowledge structures. The most classic paradigm is the pipeline that first discovers
+and links conceptual entities, resolves coreferencementions, then extracts relationships among
+entities. The general procedure of knowledge graph construction is displayed in Figure 1.
+More recently, deep learning methods have given rise to tremendous breakthroughs in natural
+language processing (NLP), and these breakthroughs have fed applications for knowledge
+graph construction in a range of respects. Numerous deep learning models have delivered good
+performances with tasks like named entity recognition [14][15], entity typing [16][17], entity
+linking [18][19], coreference resolution [20], and relation extraction [21][22]. Additionally, deep
+knowledge representation models have also been developed that can refine knowledge graphs.
+The refinements include completing corrupt tuples, discovering new tuples in a built knowledge
+graph via its inner graph structure, and merging graphs from different sources to construct new knowledge graphs. At present, many knowledge bases,1 such as TransOMCS [23], ASER [24] and
+huapu [25] have put automatic KG construction methods into practice.
+Further, with advances in the pre-training of deep learning models, such as the pre-trained
+BERT model [26] and some of the massive-scale graph convolution network (GCN) models,KG
+construction tasks are being applied to more complicated scenarios in the big data environment.
+Beyond systems that deal with heterogeneous data, like web pages and table forms, more attention
+is being paid to effective methods of tackling complex data for example, jointly unifying multiple
+acquisition sub-tasks or solutions that harvest knowledge graphs from long-term contexts [27],
+noisy data [28], or low-resource data [29].
+In terms of knowledge graph refinement tasks, interpretable reasoning has become a prevalent
+trend. Researchers are seeking solutions that merge cross-lingual knowledge and derive new relationships
+between nodes through logic and reasoning. Researchers are also focusing on knowledge
+graphs for conditional knowledge, such as temporal knowledge graphs [30] and generic condition
+knowledge graphs [31]. Active learning [32], asking human users about unknown data for
+collection, is another significant direction for handling knowledge fromautonomous communities.
+Further,Wu et al. [33] summarize the essence of big data environments with the HACE theorem.
+The term, “HACE”, stands for heterogeneous, autonomous, complex, and evolving characteristics
+of big data sources. We present the specific challenges facing knowledge discovery in such environments
+for KG construction in Figure 2.

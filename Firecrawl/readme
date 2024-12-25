@@ -1,0 +1,55 @@
+already crawled:
+{"url":"https://www.chaincatcher.com/article/2065794", "css":[".rich_text_content"]},
+{"url":"https://www.coindesk.com/markets/2014/01/23/ethereum-launches-cryptocurrency-20-network/", "css":[".content-chunk"]}
+{"url":"https://www.chaincatcher.com/article/2066446", "css":[".rich_text_content"]},
+{"url":"https://www.chaincatcher.com/article/2079249", "css":[".rich_text_content"]},
+{"url":"https://www.coindesk.com/markets/2014/07/23/ethereum-launches-own-ether-coin-with-millions-already-sold/", "css":[".content-chunk"]},
+{"url":"https://www.coindesk.com/markets/2015/07/30/ethereum-launches-long-awaited-decentralized-app-network/", "css":[".content-chunk"]},
+{"url":"https://www.chaincatcher.com/article/2085883", "css":[".rich_text_content"]},
+{"url":"https://www.chaincatcher.com/article/2088242", "css":[".rich_text_content"]},
+{"url":"https://www.chaincatcher.com/article/2088076", "css":[".rich_text_content"]},
+{"url":"https://www.chaincatcher.com/article/2092579", "css":[".rich_text_content"]},
+{"url":"https://www.chaincatcher.com/article/2095513", "css":[".rich_text_content"]},
+{"url":"https://www.chaincatcher.com/article/2095668", "css":[".rich_text_content"]},
+{"url":"https://www.chaincatcher.com/article/2096573", "css":[".rich_text_content"]},
+{"url":"https://www.chaincatcher.com/article/2097536", "css":[".rich_text_content"]},
+{"url":"https://www.chaincatcher.com/article/2109470", "css":[".rich_text_content"]},
+{"url":"https://www.chaincatcher.com/article/2125813", "css":[".rich_text_content"]},
+{"url":"https://www.chaincatcher.com/article/2142033", "css":[".rich_text_content"]},   # can't crawl
+{"url":"https://www.chaincatcher.com/article/2134771", "css":[".rich_text_content"]},
+{"url":"https://www.chaincatcher.com/article/2142254", "css":[".rich_text_content"]},
+{"url":"https://www.chaincatcher.com/article/2144726", "css":[".rich_text_content"]},
+EN:
+{"url":"https://www.coindesk.com/markets/2017/02/28/big-corporates-unite-for-launch-of-enterprise-ethereum-alliance/", "css":[".content-chunk"]},
+{"url":"https://www.coindesk.com/markets/2017/12/07/cat-fight-ethereum-users-clash-over-cryptokitties/", "css":[".content-chunk"]},
+{"url":"https://www.coindesk.com/markets/2020/07/11/sale-of-the-century-the-inside-story-of-ethereums-2014-premine/", "css":[".content-chunk"]},
+{"url":"https://www.coindesk.com/tech/2020/12/01/ethereum-20-beacon-chain-goes-live-as-world-computer-begins-long-awaited-overhaul/", "css":[".content-chunk"]},
+{"url":"https://www.coindesk.com/tech/2021/08/05/ethereums-hotly-anticipated-london-hard-fork-is-now-live/", "css":[".content-chunk"]},
+{"url":"https://www.coindesk.com/layer2/2022/06/08/scaling-ethereum-beyond-the-merge-danksharding/", "css":[".content-chunk"]},
+{"url":"https://www.coindesk.com/tech/2022/09/15/the-ethereum-merge-is-done-did-it-work/", "css":[".content-chunk"]},
+{"url":"https://blockworks.co/news/ethereum-foundation-treasury-management-concerns", "css":[".prose-purple"]},
+{"url":"https://thedefiant.io/news/tradfi-and-fintech/u-s-securities-regulator-approves-spot-ether-etfs-in-landmark-decision", "css":[".prose"]},
+{"url":"https://decrypt.co/221345/dencun-upgrade-goes-live-ushering-in-new-era-for-ethereum", "css":[".grid-cols-1"]},
+{"url":"https://www.theblock.co/post/274626/ether-options-monthly-trading-volume-hits-all-time-high-in-january?modal=newsletter", "css":[".articleContent"]},
+{"url":"https://thedefiant.io/news/markets/eth-s-supply-tags-new-post-merge-low-amid-surging-on-chain-activity", "css":[".prose"]},
+{"url":"https://www.nytimes.com/2016/06/18/business/dealbook/hacker-may-have-removed-more-than-50-million-from-experimental-cybercurrency-project.html#", "css":[".css-s99gbd StoryBodyCompanionColumn"]},  # 爬不到内容
+
+To be crawled:
+CN_ZH:
+
+EN:
+
+
+
+路径:
+1.firecrawl API或本地部署方式爬取新闻报道网页以markdown格式存储为txt文件
+2.将txt文件传递给大模型qwen-plus,通过prompt使其去除txt文件中的作者,源网页等信息,将清洗后的大模型回答保存为txt文件
+prompt:
+请你清洗文本，去除标题、来源、编译信息以及不必要的格式化字符，保持内容的连贯性和可读性，
+对于形如**[ARTICLE 1: xxx - ChainCatcher]**的内容，去除其中的**- ChainCatcher**
+请关注正文开头部分，对于形如**_原标题：_  _来源：Cointelegraph，Fortune_  _编译：Felix, PANews_  **的内容，将其去除
+请关注正文结尾部分，对于形如**  _Story co-authored by Danny Bradbury and Nermin Hajdarbegovic_  _and  Images via Shutterstock_**的内容，将其去除
+以下是需要清洗的文本：
+
+3.将清洗后的txt文件传递给local-graphrag-ollama生成索引
+4.生成索引后分别测试global和local方式对ollama提问
