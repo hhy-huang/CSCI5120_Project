@@ -1,0 +1,671 @@
+16:17:54,279 graphrag.config.read_dotenv INFO Loading pipeline .env file
+16:17:54,287 graphrag.index.cli INFO using default configuration: {
+    "llm": {
+        "api_key": "REDACTED, length 9",
+        "type": "openai_chat",
+        "model": "mistral",
+        "max_tokens": 4000,
+        "temperature": 0.0,
+        "top_p": 1.0,
+        "request_timeout": 180.0,
+        "api_base": "http://localhost:11434/v1",
+        "api_version": null,
+        "proxy": null,
+        "cognitive_services_endpoint": null,
+        "deployment_name": null,
+        "model_supports_json": true,
+        "tokens_per_minute": 0,
+        "requests_per_minute": 0,
+        "max_retries": 10,
+        "max_retry_wait": 10.0,
+        "sleep_on_rate_limit_recommendation": true,
+        "concurrent_requests": 25
+    },
+    "parallelization": {
+        "stagger": 0.3,
+        "num_threads": 50
+    },
+    "async_mode": "threaded",
+    "root_dir": "./ragtest",
+    "reporting": {
+        "type": "file",
+        "base_dir": "output/${timestamp}/reports",
+        "storage_account_blob_url": null
+    },
+    "storage": {
+        "type": "file",
+        "base_dir": "output/${timestamp}/artifacts",
+        "storage_account_blob_url": null
+    },
+    "cache": {
+        "type": "file",
+        "base_dir": "cache",
+        "storage_account_blob_url": null
+    },
+    "input": {
+        "type": "file",
+        "file_type": "text",
+        "base_dir": "input",
+        "storage_account_blob_url": null,
+        "encoding": "utf-8",
+        "file_pattern": ".*\\.txt$",
+        "file_filter": null,
+        "source_column": null,
+        "timestamp_column": null,
+        "timestamp_format": null,
+        "text_column": "text",
+        "title_column": null,
+        "document_attribute_columns": []
+    },
+    "embed_graph": {
+        "enabled": false,
+        "num_walks": 10,
+        "walk_length": 40,
+        "window_size": 2,
+        "iterations": 3,
+        "random_seed": 597832,
+        "strategy": null
+    },
+    "embeddings": {
+        "llm": {
+            "api_key": "REDACTED, length 9",
+            "type": "openai_embedding",
+            "model": "nomic-embed-text",
+            "max_tokens": 4000,
+            "temperature": 0,
+            "top_p": 1,
+            "request_timeout": 180.0,
+            "api_base": "http://localhost:11434/api",
+            "api_version": null,
+            "proxy": null,
+            "cognitive_services_endpoint": null,
+            "deployment_name": null,
+            "model_supports_json": null,
+            "tokens_per_minute": 0,
+            "requests_per_minute": 0,
+            "max_retries": 10,
+            "max_retry_wait": 10.0,
+            "sleep_on_rate_limit_recommendation": true,
+            "concurrent_requests": 25
+        },
+        "parallelization": {
+            "stagger": 0.3,
+            "num_threads": 50
+        },
+        "async_mode": "threaded",
+        "batch_size": 16,
+        "batch_max_tokens": 8191,
+        "target": "required",
+        "skip": [],
+        "vector_store": null,
+        "strategy": null
+    },
+    "chunks": {
+        "size": 300,
+        "overlap": 100,
+        "group_by_columns": [
+            "id"
+        ],
+        "strategy": null
+    },
+    "snapshots": {
+        "graphml": true,
+        "raw_entities": true,
+        "top_level_nodes": true
+    },
+    "entity_extraction": {
+        "llm": {
+            "api_key": "REDACTED, length 9",
+            "type": "openai_chat",
+            "model": "mistral",
+            "max_tokens": 4000,
+            "temperature": 0.0,
+            "top_p": 1.0,
+            "request_timeout": 180.0,
+            "api_base": "http://localhost:11434/v1",
+            "api_version": null,
+            "proxy": null,
+            "cognitive_services_endpoint": null,
+            "deployment_name": null,
+            "model_supports_json": true,
+            "tokens_per_minute": 0,
+            "requests_per_minute": 0,
+            "max_retries": 10,
+            "max_retry_wait": 10.0,
+            "sleep_on_rate_limit_recommendation": true,
+            "concurrent_requests": 25
+        },
+        "parallelization": {
+            "stagger": 0.3,
+            "num_threads": 50
+        },
+        "async_mode": "threaded",
+        "prompt": "prompts/entity_extraction.txt",
+        "entity_types": [
+            "organization",
+            "person",
+            "geo",
+            "event"
+        ],
+        "max_gleanings": 0,
+        "strategy": null
+    },
+    "summarize_descriptions": {
+        "llm": {
+            "api_key": "REDACTED, length 9",
+            "type": "openai_chat",
+            "model": "mistral",
+            "max_tokens": 4000,
+            "temperature": 0.0,
+            "top_p": 1.0,
+            "request_timeout": 180.0,
+            "api_base": "http://localhost:11434/v1",
+            "api_version": null,
+            "proxy": null,
+            "cognitive_services_endpoint": null,
+            "deployment_name": null,
+            "model_supports_json": true,
+            "tokens_per_minute": 0,
+            "requests_per_minute": 0,
+            "max_retries": 10,
+            "max_retry_wait": 10.0,
+            "sleep_on_rate_limit_recommendation": true,
+            "concurrent_requests": 25
+        },
+        "parallelization": {
+            "stagger": 0.3,
+            "num_threads": 50
+        },
+        "async_mode": "threaded",
+        "prompt": "prompts/summarize_descriptions.txt",
+        "max_length": 500,
+        "strategy": null
+    },
+    "community_reports": {
+        "llm": {
+            "api_key": "REDACTED, length 9",
+            "type": "openai_chat",
+            "model": "mistral",
+            "max_tokens": 4000,
+            "temperature": 0.0,
+            "top_p": 1.0,
+            "request_timeout": 180.0,
+            "api_base": "http://localhost:11434/v1",
+            "api_version": null,
+            "proxy": null,
+            "cognitive_services_endpoint": null,
+            "deployment_name": null,
+            "model_supports_json": true,
+            "tokens_per_minute": 0,
+            "requests_per_minute": 0,
+            "max_retries": 10,
+            "max_retry_wait": 10.0,
+            "sleep_on_rate_limit_recommendation": true,
+            "concurrent_requests": 25
+        },
+        "parallelization": {
+            "stagger": 0.3,
+            "num_threads": 50
+        },
+        "async_mode": "threaded",
+        "prompt": null,
+        "max_length": 2000,
+        "max_input_length": 8000,
+        "strategy": null
+    },
+    "claim_extraction": {
+        "llm": {
+            "api_key": "REDACTED, length 9",
+            "type": "openai_chat",
+            "model": "mistral",
+            "max_tokens": 4000,
+            "temperature": 0.0,
+            "top_p": 1.0,
+            "request_timeout": 180.0,
+            "api_base": "http://localhost:11434/v1",
+            "api_version": null,
+            "proxy": null,
+            "cognitive_services_endpoint": null,
+            "deployment_name": null,
+            "model_supports_json": true,
+            "tokens_per_minute": 0,
+            "requests_per_minute": 0,
+            "max_retries": 10,
+            "max_retry_wait": 10.0,
+            "sleep_on_rate_limit_recommendation": true,
+            "concurrent_requests": 25
+        },
+        "parallelization": {
+            "stagger": 0.3,
+            "num_threads": 50
+        },
+        "async_mode": "threaded",
+        "enabled": false,
+        "prompt": "prompts/claim_extraction.txt",
+        "description": "Any claims or facts that could be relevant to information discovery.",
+        "max_gleanings": 0,
+        "strategy": null
+    },
+    "cluster_graph": {
+        "max_cluster_size": 10,
+        "strategy": null
+    },
+    "umap": {
+        "enabled": false
+    },
+    "local_search": {
+        "text_unit_prop": 0.5,
+        "community_prop": 0.1,
+        "conversation_history_max_turns": 5,
+        "top_k_entities": 10,
+        "top_k_relationships": 10,
+        "max_tokens": 12000,
+        "llm_max_tokens": 2000
+    },
+    "global_search": {
+        "temperature": 0.0,
+        "top_p": 1.0,
+        "max_tokens": 12000,
+        "data_max_tokens": 12000,
+        "map_max_tokens": 1000,
+        "reduce_max_tokens": 2000,
+        "concurrency": 32
+    },
+    "encoding_model": "cl100k_base",
+    "skip_workflows": []
+}
+16:17:54,303 graphrag.index.create_pipeline_config INFO skipping workflows 
+16:17:54,303 graphrag.index.run INFO Running pipeline
+16:17:54,303 graphrag.index.storage.file_pipeline_storage INFO Creating file storage at ragtest\output\20240910-161754\artifacts
+16:17:54,303 graphrag.index.input.load_input INFO loading input from root_dir=input
+16:17:54,303 graphrag.index.input.load_input INFO using file storage for input
+16:17:54,303 graphrag.index.storage.file_pipeline_storage INFO search ragtest\input for files matching .*\.txt$
+16:17:54,303 graphrag.index.input.text INFO found text files from input, found [('CNN_intro.txt', {}), ('GNN_intro.txt', {}), ('machinelearning_intro.txt', {}), ('Transformers_intro.txt', {})]
+16:17:54,313 graphrag.index.workflows.load INFO Workflow Run Order: ['create_base_text_units', 'create_base_extracted_entities', 'create_summarized_entities', 'create_base_entity_graph', 'create_final_entities', 'create_final_nodes', 'create_final_communities', 'join_text_units_to_entity_ids', 'create_final_relationships', 'join_text_units_to_relationship_ids', 'create_final_community_reports', 'create_final_text_units', 'create_base_documents', 'create_final_documents']
+16:17:54,313 graphrag.index.run INFO Final # of rows loaded: 4
+16:17:54,463 graphrag.index.run INFO Running workflow: create_base_text_units...
+16:17:54,463 graphrag.index.run INFO dependencies for create_base_text_units: []
+16:17:54,466 datashaper.workflow.workflow INFO executing verb orderby
+16:17:54,466 datashaper.workflow.workflow INFO executing verb zip
+16:17:54,466 datashaper.workflow.workflow INFO executing verb aggregate_override
+16:17:54,481 datashaper.workflow.workflow INFO executing verb chunk
+16:17:58,182 datashaper.workflow.workflow INFO executing verb select
+16:17:58,182 datashaper.workflow.workflow INFO executing verb unroll
+16:17:58,189 datashaper.workflow.workflow INFO executing verb rename
+16:17:58,189 datashaper.workflow.workflow INFO executing verb genid
+16:17:58,189 datashaper.workflow.workflow INFO executing verb unzip
+16:17:58,189 datashaper.workflow.workflow INFO executing verb copy
+16:17:58,189 datashaper.workflow.workflow INFO executing verb filter
+16:17:58,204 graphrag.index.emit.parquet_table_emitter INFO emitting parquet table create_base_text_units.parquet
+16:17:58,386 graphrag.index.run INFO Running workflow: create_base_extracted_entities...
+16:17:58,386 graphrag.index.run INFO dependencies for create_base_extracted_entities: ['create_base_text_units']
+16:17:58,386 graphrag.index.run INFO read table from storage: create_base_text_units.parquet
+16:17:58,406 datashaper.workflow.workflow INFO executing verb entity_extract
+16:17:58,416 graphrag.llm.openai.create_openai_client INFO Creating OpenAI client base_url=http://localhost:11434/v1
+16:17:58,554 graphrag.index.llm.load_llm INFO create TPM/RPM limiter for mistral: TPM=0, RPM=0
+16:17:58,554 graphrag.index.llm.load_llm INFO create concurrency limiter for mistral: 25
+16:18:14,581 httpx INFO HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+16:18:14,584 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 16.0. input_tokens=2234, output_tokens=347
+16:18:19,691 httpx INFO HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+16:18:19,693 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 21.09400000000005. input_tokens=2234, output_tokens=469
+16:18:21,168 httpx INFO HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+16:18:21,170 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 22.57800000000043. input_tokens=2234, output_tokens=479
+16:18:32,495 httpx INFO HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+16:18:32,497 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 33.90599999999995. input_tokens=2234, output_tokens=257
+16:18:34,629 httpx INFO HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+16:18:34,630 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 36.03099999999995. input_tokens=2234, output_tokens=736
+16:18:36,555 httpx INFO HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+16:18:36,556 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 37.96900000000005. input_tokens=2234, output_tokens=288
+16:18:46,350 httpx INFO HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+16:18:46,351 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 47.76599999999962. input_tokens=1982, output_tokens=217
+16:18:52,824 httpx INFO HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+16:18:52,825 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 54.23400000000038. input_tokens=2152, output_tokens=368
+16:19:00,197 httpx INFO HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+16:19:00,199 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 61.625. input_tokens=2234, output_tokens=450
+16:19:01,761 httpx INFO HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+16:19:01,761 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 63.1880000000001. input_tokens=2034, output_tokens=288
+16:19:13,509 httpx INFO HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+16:19:13,510 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 74.90599999999995. input_tokens=1952, output_tokens=224
+16:19:19,974 httpx INFO HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+16:19:19,976 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 81.375. input_tokens=2059, output_tokens=464
+16:20:08,759 httpx INFO HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+16:20:08,761 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 130.17199999999957. input_tokens=2182, output_tokens=737
+16:20:16,223 httpx INFO HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+16:20:16,225 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 137.65599999999995. input_tokens=2234, output_tokens=1112
+16:20:57,431 httpx INFO HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+16:20:57,433 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 178.84400000000005. input_tokens=2234, output_tokens=588
+16:20:58,917 graphrag.index.reporting.file_workflow_callbacks INFO Error Invoking LLM details={'input': '\n-Goal-\nGiven a text document that is potentially relevant to this activity and a list of entity types, identify all entities of those types from the text and all relationships among the identified entities.\n\n-Steps-\n1. Identify all entities. For each identified entity, extract the following information:\n- entity_name: Name of the entity, capitalized\n- entity_type: One of the following types: [organization,person,geo,event]\n- entity_description: Comprehensive description of the entity\'s attributes and activities\nFormat each entity as ("entity"<|><entity_name><|><entity_type><|><entity_description>\n\n2. From the entities identified in step 1, identify all pairs of (source_entity, target_entity) that are *clearly related* to each other.\nFor each pair of related entities, extract the following information:\n- source_entity: name of the source entity, as identified in step 1\n- target_entity: name of the target entity, as identified in step 1\n- relationship_description: explanation as to why you think the source entity and the target entity are related to each other\n- relationship_strength: a numeric score indicating strength of the relationship between the source entity and target entity\n Format each relationship as ("relationship"<|><source_entity><|><target_entity><|><relationship_description><|><relationship_strength>)\n\n3. Return output in English as a single list of all the entities and relationships identified in steps 1 and 2. Use **##** as the list delimiter.\n\n4. When finished, output <|COMPLETE|>\n\n######################\n-Examples-\n######################\nExample 1:\n\nEntity_types: [person, technology, mission, organization, location]\nText:\nwhile Alex clenched his jaw, the buzz of frustration dull against the backdrop of Taylor\'s authoritarian certainty. It was this competitive undercurrent that kept him alert, the sense that his and Jordan\'s shared commitment to discovery was an unspoken rebellion against Cruz\'s narrowing vision of control and order.\n\nThen Taylor did something unexpected. They paused beside Jordan and, for a moment, observed the device with something akin to reverence. ¡°If this tech can be understood..." Taylor said, their voice quieter, "It could change the game for us. For all of us.¡±\n\nThe underlying dismissal earlier seemed to falter, replaced by a glimpse of reluctant respect for the gravity of what lay in their hands. Jordan looked up, and for a fleeting heartbeat, their eyes locked with Taylor\'s, a wordless clash of wills softening into an uneasy truce.\n\nIt was a small transformation, barely perceptible, but one that Alex noted with an inward nod. They had all been brought here by different paths\n################\nOutput:\n("entity"<|>"Alex"<|>"person"<|>"Alex is a character who experiences frustration and is observant of the dynamics among other characters.")##\n("entity"<|>"Taylor"<|>"person"<|>"Taylor is portrayed with authoritarian certainty and shows a moment of reverence towards a device, indicating a change in perspective.")##\n("entity"<|>"Jordan"<|>"person"<|>"Jordan shares a commitment to discovery and has a significant interaction with Taylor regarding a device.")##\n("entity"<|>"Cruz"<|>"person"<|>"Cruz is associated with a vision of control and order, influencing the dynamics among other characters.")##\n("entity"<|>"The Device"<|>"technology"<|>"The Device is central to the story, with potential game-changing implications, and is revered by Taylor.")##\n("relationship"<|>"Alex"<|>"Taylor"<|>"Alex is affected by Taylor\'s authoritarian certainty and observes changes in Taylor\'s attitude towards the device."<|>7)##\n("relationship"<|>"Alex"<|>"Jordan"<|>"Alex and Jordan share a commitment to discovery, which contrasts with Cruz\'s vision."<|>6)##\n("relationship"<|>"Taylor"<|>"Jordan"<|>"Taylor and Jordan interact directly regarding the device, leading to a moment of mutual respect and an uneasy truce."<|>8)##\n("relationship"<|>"Jordan"<|>"Cruz"<|>"Jordan\'s commitment to discovery is in rebellion against Cruz\'s vision of control and order."<|>5)##\n("relationship"<|>"Taylor"<|>"The Device"<|>"Taylor shows reverence towards the device, indicating its importance and potential impact."<|>9)<|COMPLETE|>\n#############################\nExample 2:\n\nEntity_types: [person, technology, mission, organization, location]\nText:\nThey were no longer mere operatives; they had become guardians of a threshold, keepers of a message from a realm beyond stars and stripes. This elevation in their mission could not be shackled by regulations and established protocols¡ªit demanded a new perspective, a new resolve.\n\nTension threaded through the dialogue of beeps and static as communications with Washington buzzed in the background. The team stood, a portentous air enveloping them. It was clear that the decisions they made in the ensuing hours could redefine humanity\'s place in the cosmos or condemn them to ignorance and potential peril.\n\nTheir connection to the stars solidified, the group moved to address the crystallizing warning, shifting from passive recipients to active participants. Mercer\'s latter instincts gained precedence¡ª the team\'s mandate had evolved, no longer solely to observe and report but to interact and prepare. A metamorphosis had begun, and Operation: Dulce hummed with the newfound frequency of their daring, a tone set not by the earthly\n#############\nOutput:\n("entity"<|>"Washington"<|>"location"<|>"Washington is a location where communications are being received, indicating its importance in the decision-making process.")##\n("entity"<|>"Operation: Dulce"<|>"mission"<|>"Operation: Dulce is described as a mission that has evolved to interact and prepare, indicating a significant shift in objectives and activities.")##\n("entity"<|>"The team"<|>"organization"<|>"The team is portrayed as a group of individuals who have transitioned from passive observers to active participants in a mission, showing a dynamic change in their role.")##\n("relationship"<|>"The team"<|>"Washington"<|>"The team receives communications from Washington, which influences their decision-making process."<|>7)##\n("relationship"<|>"The team"<|>"Operation: Dulce"<|>"The team is directly involved in Operation: Dulce, executing its evolved objectives and activities."<|>9)<|COMPLETE|>\n#############################\nExample 3:\n\nEntity_types: [person, role, technology, organization, event, location, concept]\nText:\ntheir voice slicing through the buzz of activity. "Control may be an illusion when facing an intelligence that literally writes its own rules," they stated stoically, casting a watchful eye over the flurry of data.\n\n"It\'s like it\'s learning to communicate," offered Sam Rivera from a nearby interface, their youthful energy boding a mix of awe and anxiety. "This gives talking to strangers\' a whole new meaning."\n\nAlex surveyed his team¡ªeach face a study in concentration, determination, and not a small measure of trepidation. "This might well be our first contact," he acknowledged, "And we need to be ready for whatever answers back."\n\nTogether, they stood on the edge of the unknown, forging humanity\'s response to a message from the heavens. The ensuing silence was palpable¡ªa collective introspection about their role in this grand cosmic play, one that could rewrite human history.\n\nThe encrypted dialogue continued to unfold, its intricate patterns showing an almost uncanny anticipation\n#############\nOutput:\n("entity"<|>"Sam Rivera"<|>"person"<|>"Sam Rivera is a member of a team working on communicating with an unknown intelligence, showing a mix of awe and anxiety.")##\n("entity"<|>"Alex"<|>"person"<|>"Alex is the leader of a team attempting first contact with an unknown intelligence, acknowledging the significance of their task.")##\n("entity"<|>"Control"<|>"concept"<|>"Control refers to the ability to manage or govern, which is challenged by an intelligence that writes its own rules.")##\n("entity"<|>"Intelligence"<|>"concept"<|>"Intelligence here refers to an unknown entity capable of writing its own rules and learning to communicate.")##\n("entity"<|>"First Contact"<|>"event"<|>"First Contact is the potential initial communication between humanity and an unknown intelligence.")##\n("entity"<|>"Humanity\'s Response"<|>"event"<|>"Humanity\'s Response is the collective action taken by Alex\'s team in response to a message from an unknown intelligence.")##\n("relationship"<|>"Sam Rivera"<|>"Intelligence"<|>"Sam Rivera is directly involved in the process of learning to communicate with the unknown intelligence."<|>9)##\n("relationship"<|>"Alex"<|>"First Contact"<|>"Alex leads the team that might be making the First Contact with the unknown intelligence."<|>10)##\n("relationship"<|>"Alex"<|>"Humanity\'s Response"<|>"Alex and his team are the key figures in Humanity\'s Response to the unknown intelligence."<|>8)##\n("relationship"<|>"Control"<|>"Intelligence"<|>"The concept of Control is challenged by the Intelligence that writes its own rules."<|>7)<|COMPLETE|>\n#############################\n-Real Data-\n######################\nEntity_types: organization,person,geo,event\nText: can be a limiting factor in domains where data is scarce or expensive to annotate. Additionally, CNNs can struggle with understanding global context due to their inherent focus on local features, making them less effective for tasks requiring long-range dependencies. Transfer learning and data augmentation techniques are commonly used to mitigate some of these issues, but they do not fully address the fundamental challenges. Interpretability is also a concern, as CNNs are often viewed as black-box models, making it difficult to understand the rationale behind their predictions. Enhancing the transparency and efficiency of CNNs remains an active area of research.\n\nFuture Directions\nThe future of Convolutional Neural Networks holds exciting possibilities as researchers continue to innovate and address existing limitations. One promising direction is the development of more efficient architectures, such as MobileNets and EfficientNets, which aim to reduce computational complexity while maintaining high performance. Advances in neural architecture search (NAS) allow for automated design of optimized network structures tailored to specific tasks and hardware constraints. Integrating CNNs with other neural network types, such as recurrent neural networks (RNNs) or transformers, can lead to more powerful hybrid models capable of handling diverse data types and tasks. Additionally, the application of CNNs is expanding into new fields such as genomics, climate science, and even art generation, demonstrating their versatility. Efforts to improve the interpretability of CNNs, such as developing techniques for visualizing and understanding the learned filters and feature maps, are also crucial for building trust and transparency\n######################\nOutput:'}
+16:20:58,917 graphrag.index.reporting.file_workflow_callbacks INFO Error Invoking LLM details={'input': '\n-Goal-\nGiven a text document that is potentially relevant to this activity and a list of entity types, identify all entities of those types from the text and all relationships among the identified entities.\n\n-Steps-\n1. Identify all entities. For each identified entity, extract the following information:\n- entity_name: Name of the entity, capitalized\n- entity_type: One of the following types: [organization,person,geo,event]\n- entity_description: Comprehensive description of the entity\'s attributes and activities\nFormat each entity as ("entity"<|><entity_name><|><entity_type><|><entity_description>\n\n2. From the entities identified in step 1, identify all pairs of (source_entity, target_entity) that are *clearly related* to each other.\nFor each pair of related entities, extract the following information:\n- source_entity: name of the source entity, as identified in step 1\n- target_entity: name of the target entity, as identified in step 1\n- relationship_description: explanation as to why you think the source entity and the target entity are related to each other\n- relationship_strength: a numeric score indicating strength of the relationship between the source entity and target entity\n Format each relationship as ("relationship"<|><source_entity><|><target_entity><|><relationship_description><|><relationship_strength>)\n\n3. Return output in English as a single list of all the entities and relationships identified in steps 1 and 2. Use **##** as the list delimiter.\n\n4. When finished, output <|COMPLETE|>\n\n######################\n-Examples-\n######################\nExample 1:\n\nEntity_types: [person, technology, mission, organization, location]\nText:\nwhile Alex clenched his jaw, the buzz of frustration dull against the backdrop of Taylor\'s authoritarian certainty. It was this competitive undercurrent that kept him alert, the sense that his and Jordan\'s shared commitment to discovery was an unspoken rebellion against Cruz\'s narrowing vision of control and order.\n\nThen Taylor did something unexpected. They paused beside Jordan and, for a moment, observed the device with something akin to reverence. ¡°If this tech can be understood..." Taylor said, their voice quieter, "It could change the game for us. For all of us.¡±\n\nThe underlying dismissal earlier seemed to falter, replaced by a glimpse of reluctant respect for the gravity of what lay in their hands. Jordan looked up, and for a fleeting heartbeat, their eyes locked with Taylor\'s, a wordless clash of wills softening into an uneasy truce.\n\nIt was a small transformation, barely perceptible, but one that Alex noted with an inward nod. They had all been brought here by different paths\n################\nOutput:\n("entity"<|>"Alex"<|>"person"<|>"Alex is a character who experiences frustration and is observant of the dynamics among other characters.")##\n("entity"<|>"Taylor"<|>"person"<|>"Taylor is portrayed with authoritarian certainty and shows a moment of reverence towards a device, indicating a change in perspective.")##\n("entity"<|>"Jordan"<|>"person"<|>"Jordan shares a commitment to discovery and has a significant interaction with Taylor regarding a device.")##\n("entity"<|>"Cruz"<|>"person"<|>"Cruz is associated with a vision of control and order, influencing the dynamics among other characters.")##\n("entity"<|>"The Device"<|>"technology"<|>"The Device is central to the story, with potential game-changing implications, and is revered by Taylor.")##\n("relationship"<|>"Alex"<|>"Taylor"<|>"Alex is affected by Taylor\'s authoritarian certainty and observes changes in Taylor\'s attitude towards the device."<|>7)##\n("relationship"<|>"Alex"<|>"Jordan"<|>"Alex and Jordan share a commitment to discovery, which contrasts with Cruz\'s vision."<|>6)##\n("relationship"<|>"Taylor"<|>"Jordan"<|>"Taylor and Jordan interact directly regarding the device, leading to a moment of mutual respect and an uneasy truce."<|>8)##\n("relationship"<|>"Jordan"<|>"Cruz"<|>"Jordan\'s commitment to discovery is in rebellion against Cruz\'s vision of control and order."<|>5)##\n("relationship"<|>"Taylor"<|>"The Device"<|>"Taylor shows reverence towards the device, indicating its importance and potential impact."<|>9)<|COMPLETE|>\n#############################\nExample 2:\n\nEntity_types: [person, technology, mission, organization, location]\nText:\nThey were no longer mere operatives; they had become guardians of a threshold, keepers of a message from a realm beyond stars and stripes. This elevation in their mission could not be shackled by regulations and established protocols¡ªit demanded a new perspective, a new resolve.\n\nTension threaded through the dialogue of beeps and static as communications with Washington buzzed in the background. The team stood, a portentous air enveloping them. It was clear that the decisions they made in the ensuing hours could redefine humanity\'s place in the cosmos or condemn them to ignorance and potential peril.\n\nTheir connection to the stars solidified, the group moved to address the crystallizing warning, shifting from passive recipients to active participants. Mercer\'s latter instincts gained precedence¡ª the team\'s mandate had evolved, no longer solely to observe and report but to interact and prepare. A metamorphosis had begun, and Operation: Dulce hummed with the newfound frequency of their daring, a tone set not by the earthly\n#############\nOutput:\n("entity"<|>"Washington"<|>"location"<|>"Washington is a location where communications are being received, indicating its importance in the decision-making process.")##\n("entity"<|>"Operation: Dulce"<|>"mission"<|>"Operation: Dulce is described as a mission that has evolved to interact and prepare, indicating a significant shift in objectives and activities.")##\n("entity"<|>"The team"<|>"organization"<|>"The team is portrayed as a group of individuals who have transitioned from passive observers to active participants in a mission, showing a dynamic change in their role.")##\n("relationship"<|>"The team"<|>"Washington"<|>"The team receives communications from Washington, which influences their decision-making process."<|>7)##\n("relationship"<|>"The team"<|>"Operation: Dulce"<|>"The team is directly involved in Operation: Dulce, executing its evolved objectives and activities."<|>9)<|COMPLETE|>\n#############################\nExample 3:\n\nEntity_types: [person, role, technology, organization, event, location, concept]\nText:\ntheir voice slicing through the buzz of activity. "Control may be an illusion when facing an intelligence that literally writes its own rules," they stated stoically, casting a watchful eye over the flurry of data.\n\n"It\'s like it\'s learning to communicate," offered Sam Rivera from a nearby interface, their youthful energy boding a mix of awe and anxiety. "This gives talking to strangers\' a whole new meaning."\n\nAlex surveyed his team¡ªeach face a study in concentration, determination, and not a small measure of trepidation. "This might well be our first contact," he acknowledged, "And we need to be ready for whatever answers back."\n\nTogether, they stood on the edge of the unknown, forging humanity\'s response to a message from the heavens. The ensuing silence was palpable¡ªa collective introspection about their role in this grand cosmic play, one that could rewrite human history.\n\nThe encrypted dialogue continued to unfold, its intricate patterns showing an almost uncanny anticipation\n#############\nOutput:\n("entity"<|>"Sam Rivera"<|>"person"<|>"Sam Rivera is a member of a team working on communicating with an unknown intelligence, showing a mix of awe and anxiety.")##\n("entity"<|>"Alex"<|>"person"<|>"Alex is the leader of a team attempting first contact with an unknown intelligence, acknowledging the significance of their task.")##\n("entity"<|>"Control"<|>"concept"<|>"Control refers to the ability to manage or govern, which is challenged by an intelligence that writes its own rules.")##\n("entity"<|>"Intelligence"<|>"concept"<|>"Intelligence here refers to an unknown entity capable of writing its own rules and learning to communicate.")##\n("entity"<|>"First Contact"<|>"event"<|>"First Contact is the potential initial communication between humanity and an unknown intelligence.")##\n("entity"<|>"Humanity\'s Response"<|>"event"<|>"Humanity\'s Response is the collective action taken by Alex\'s team in response to a message from an unknown intelligence.")##\n("relationship"<|>"Sam Rivera"<|>"Intelligence"<|>"Sam Rivera is directly involved in the process of learning to communicate with the unknown intelligence."<|>9)##\n("relationship"<|>"Alex"<|>"First Contact"<|>"Alex leads the team that might be making the First Contact with the unknown intelligence."<|>10)##\n("relationship"<|>"Alex"<|>"Humanity\'s Response"<|>"Alex and his team are the key figures in Humanity\'s Response to the unknown intelligence."<|>8)##\n("relationship"<|>"Control"<|>"Intelligence"<|>"The concept of Control is challenged by the Intelligence that writes its own rules."<|>7)<|COMPLETE|>\n#############################\n-Real Data-\n######################\nEntity_types: organization,person,geo,event\nText: increasingly prevalent, showcasing the transformative potential of machine learning in transportation.\n\nChallenges and Limitations\nDespite its numerous advantages, machine learning faces several challenges and limitations. One significant issue is the quality and quantity of data available for training. High-quality, large datasets are crucial for developing accurate and reliable models, but such data can be difficult to obtain. Another challenge is the interpretability of models, especially those that are highly complex like deep neural networks. These models often act as "black boxes," making it difficult to understand how they arrive at specific decisions. Additionally, ethical considerations such as data privacy, security, and bias in AI systems are critical concerns that need to be addressed. Ensuring that ML systems are transparent, fair, and secure is essential for their widespread adoption and trustworthiness.\n\nFuture Directions\nThe future of machine learning holds immense promise as research and development continue to advance. One exciting direction is the integration of machine learning with other AI disciplines, such as computer vision and NLP, to create more comprehensive and intelligent systems. Moreover, advancements in quantum computing are expected to significantly enhance the processing capabilities of ML algorithms, enabling them to tackle even more complex problems. The development of explainable AI (XAI) aims to make machine learning models more transparent and understandable, which is crucial for gaining user trust and meeting regulatory requirements. Furthermore, ongoing efforts to improve data efficiency, model robustness, and ethical standards will shape the future landscape of machine learning, making it an indispensable tool in various fields\n######################\nOutput:'}
+16:20:58,917 graphrag.index.reporting.file_workflow_callbacks INFO Error Invoking LLM details={'input': '\n-Goal-\nGiven a text document that is potentially relevant to this activity and a list of entity types, identify all entities of those types from the text and all relationships among the identified entities.\n\n-Steps-\n1. Identify all entities. For each identified entity, extract the following information:\n- entity_name: Name of the entity, capitalized\n- entity_type: One of the following types: [organization,person,geo,event]\n- entity_description: Comprehensive description of the entity\'s attributes and activities\nFormat each entity as ("entity"<|><entity_name><|><entity_type><|><entity_description>\n\n2. From the entities identified in step 1, identify all pairs of (source_entity, target_entity) that are *clearly related* to each other.\nFor each pair of related entities, extract the following information:\n- source_entity: name of the source entity, as identified in step 1\n- target_entity: name of the target entity, as identified in step 1\n- relationship_description: explanation as to why you think the source entity and the target entity are related to each other\n- relationship_strength: a numeric score indicating strength of the relationship between the source entity and target entity\n Format each relationship as ("relationship"<|><source_entity><|><target_entity><|><relationship_description><|><relationship_strength>)\n\n3. Return output in English as a single list of all the entities and relationships identified in steps 1 and 2. Use **##** as the list delimiter.\n\n4. When finished, output <|COMPLETE|>\n\n######################\n-Examples-\n######################\nExample 1:\n\nEntity_types: [person, technology, mission, organization, location]\nText:\nwhile Alex clenched his jaw, the buzz of frustration dull against the backdrop of Taylor\'s authoritarian certainty. It was this competitive undercurrent that kept him alert, the sense that his and Jordan\'s shared commitment to discovery was an unspoken rebellion against Cruz\'s narrowing vision of control and order.\n\nThen Taylor did something unexpected. They paused beside Jordan and, for a moment, observed the device with something akin to reverence. ¡°If this tech can be understood..." Taylor said, their voice quieter, "It could change the game for us. For all of us.¡±\n\nThe underlying dismissal earlier seemed to falter, replaced by a glimpse of reluctant respect for the gravity of what lay in their hands. Jordan looked up, and for a fleeting heartbeat, their eyes locked with Taylor\'s, a wordless clash of wills softening into an uneasy truce.\n\nIt was a small transformation, barely perceptible, but one that Alex noted with an inward nod. They had all been brought here by different paths\n################\nOutput:\n("entity"<|>"Alex"<|>"person"<|>"Alex is a character who experiences frustration and is observant of the dynamics among other characters.")##\n("entity"<|>"Taylor"<|>"person"<|>"Taylor is portrayed with authoritarian certainty and shows a moment of reverence towards a device, indicating a change in perspective.")##\n("entity"<|>"Jordan"<|>"person"<|>"Jordan shares a commitment to discovery and has a significant interaction with Taylor regarding a device.")##\n("entity"<|>"Cruz"<|>"person"<|>"Cruz is associated with a vision of control and order, influencing the dynamics among other characters.")##\n("entity"<|>"The Device"<|>"technology"<|>"The Device is central to the story, with potential game-changing implications, and is revered by Taylor.")##\n("relationship"<|>"Alex"<|>"Taylor"<|>"Alex is affected by Taylor\'s authoritarian certainty and observes changes in Taylor\'s attitude towards the device."<|>7)##\n("relationship"<|>"Alex"<|>"Jordan"<|>"Alex and Jordan share a commitment to discovery, which contrasts with Cruz\'s vision."<|>6)##\n("relationship"<|>"Taylor"<|>"Jordan"<|>"Taylor and Jordan interact directly regarding the device, leading to a moment of mutual respect and an uneasy truce."<|>8)##\n("relationship"<|>"Jordan"<|>"Cruz"<|>"Jordan\'s commitment to discovery is in rebellion against Cruz\'s vision of control and order."<|>5)##\n("relationship"<|>"Taylor"<|>"The Device"<|>"Taylor shows reverence towards the device, indicating its importance and potential impact."<|>9)<|COMPLETE|>\n#############################\nExample 2:\n\nEntity_types: [person, technology, mission, organization, location]\nText:\nThey were no longer mere operatives; they had become guardians of a threshold, keepers of a message from a realm beyond stars and stripes. This elevation in their mission could not be shackled by regulations and established protocols¡ªit demanded a new perspective, a new resolve.\n\nTension threaded through the dialogue of beeps and static as communications with Washington buzzed in the background. The team stood, a portentous air enveloping them. It was clear that the decisions they made in the ensuing hours could redefine humanity\'s place in the cosmos or condemn them to ignorance and potential peril.\n\nTheir connection to the stars solidified, the group moved to address the crystallizing warning, shifting from passive recipients to active participants. Mercer\'s latter instincts gained precedence¡ª the team\'s mandate had evolved, no longer solely to observe and report but to interact and prepare. A metamorphosis had begun, and Operation: Dulce hummed with the newfound frequency of their daring, a tone set not by the earthly\n#############\nOutput:\n("entity"<|>"Washington"<|>"location"<|>"Washington is a location where communications are being received, indicating its importance in the decision-making process.")##\n("entity"<|>"Operation: Dulce"<|>"mission"<|>"Operation: Dulce is described as a mission that has evolved to interact and prepare, indicating a significant shift in objectives and activities.")##\n("entity"<|>"The team"<|>"organization"<|>"The team is portrayed as a group of individuals who have transitioned from passive observers to active participants in a mission, showing a dynamic change in their role.")##\n("relationship"<|>"The team"<|>"Washington"<|>"The team receives communications from Washington, which influences their decision-making process."<|>7)##\n("relationship"<|>"The team"<|>"Operation: Dulce"<|>"The team is directly involved in Operation: Dulce, executing its evolved objectives and activities."<|>9)<|COMPLETE|>\n#############################\nExample 3:\n\nEntity_types: [person, role, technology, organization, event, location, concept]\nText:\ntheir voice slicing through the buzz of activity. "Control may be an illusion when facing an intelligence that literally writes its own rules," they stated stoically, casting a watchful eye over the flurry of data.\n\n"It\'s like it\'s learning to communicate," offered Sam Rivera from a nearby interface, their youthful energy boding a mix of awe and anxiety. "This gives talking to strangers\' a whole new meaning."\n\nAlex surveyed his team¡ªeach face a study in concentration, determination, and not a small measure of trepidation. "This might well be our first contact," he acknowledged, "And we need to be ready for whatever answers back."\n\nTogether, they stood on the edge of the unknown, forging humanity\'s response to a message from the heavens. The ensuing silence was palpable¡ªa collective introspection about their role in this grand cosmic play, one that could rewrite human history.\n\nThe encrypted dialogue continued to unfold, its intricate patterns showing an almost uncanny anticipation\n#############\nOutput:\n("entity"<|>"Sam Rivera"<|>"person"<|>"Sam Rivera is a member of a team working on communicating with an unknown intelligence, showing a mix of awe and anxiety.")##\n("entity"<|>"Alex"<|>"person"<|>"Alex is the leader of a team attempting first contact with an unknown intelligence, acknowledging the significance of their task.")##\n("entity"<|>"Control"<|>"concept"<|>"Control refers to the ability to manage or govern, which is challenged by an intelligence that writes its own rules.")##\n("entity"<|>"Intelligence"<|>"concept"<|>"Intelligence here refers to an unknown entity capable of writing its own rules and learning to communicate.")##\n("entity"<|>"First Contact"<|>"event"<|>"First Contact is the potential initial communication between humanity and an unknown intelligence.")##\n("entity"<|>"Humanity\'s Response"<|>"event"<|>"Humanity\'s Response is the collective action taken by Alex\'s team in response to a message from an unknown intelligence.")##\n("relationship"<|>"Sam Rivera"<|>"Intelligence"<|>"Sam Rivera is directly involved in the process of learning to communicate with the unknown intelligence."<|>9)##\n("relationship"<|>"Alex"<|>"First Contact"<|>"Alex leads the team that might be making the First Contact with the unknown intelligence."<|>10)##\n("relationship"<|>"Alex"<|>"Humanity\'s Response"<|>"Alex and his team are the key figures in Humanity\'s Response to the unknown intelligence."<|>8)##\n("relationship"<|>"Control"<|>"Intelligence"<|>"The concept of Control is challenged by the Intelligence that writes its own rules."<|>7)<|COMPLETE|>\n#############################\n-Real Data-\n######################\nEntity_types: organization,person,geo,event\nText: ) to graph data by performing convolutions on nodes, aggregating features from neighboring nodes to learn node embeddings. GATs enhance this process by incorporating attention mechanisms, allowing the model to weigh the importance of different neighbors differently during the aggregation process. GRNNs, on the other hand, utilize recurrent neural network architectures to capture temporal or sequential dependencies in dynamic graphs. Each of these models has unique strengths, enabling them to be applied effectively to various graph-related tasks.\n\nApplications of Graph Neural Networks\nGraph Neural Networks have found applications in numerous fields, revolutionizing how we process and interpret graph-structured data. In social network analysis, GNNs can predict user behavior, detect communities, and recommend friends or content. In the field of chemistry, GNNs are used to predict molecular properties, aiding in drug discovery and material science. Knowledge graphs, which underpin many search engines and recommendation systems, benefit from GNNs through improved entity recognition and relationship extraction. Additionally, GNNs have been employed in transportation for traffic prediction and route optimization, in finance for fraud detection and risk assessment, and in biology for protein structure prediction and interaction modeling. The versatility of GNNs in handling diverse and complex data structures makes them invaluable across various domains.\n\nChallenges and Limitations\nDespite their powerful capabilities, Graph Neural Networks face several challenges and limitations. One major challenge is scalability, as the computational complexity of GNNs can grow rapidly with the size of the graph, making it difficult to apply them\n######################\nOutput:'}
+16:20:58,924 graphrag.index.reporting.file_workflow_callbacks INFO Error Invoking LLM details={'input': '\n-Goal-\nGiven a text document that is potentially relevant to this activity and a list of entity types, identify all entities of those types from the text and all relationships among the identified entities.\n\n-Steps-\n1. Identify all entities. For each identified entity, extract the following information:\n- entity_name: Name of the entity, capitalized\n- entity_type: One of the following types: [organization,person,geo,event]\n- entity_description: Comprehensive description of the entity\'s attributes and activities\nFormat each entity as ("entity"<|><entity_name><|><entity_type><|><entity_description>\n\n2. From the entities identified in step 1, identify all pairs of (source_entity, target_entity) that are *clearly related* to each other.\nFor each pair of related entities, extract the following information:\n- source_entity: name of the source entity, as identified in step 1\n- target_entity: name of the target entity, as identified in step 1\n- relationship_description: explanation as to why you think the source entity and the target entity are related to each other\n- relationship_strength: a numeric score indicating strength of the relationship between the source entity and target entity\n Format each relationship as ("relationship"<|><source_entity><|><target_entity><|><relationship_description><|><relationship_strength>)\n\n3. Return output in English as a single list of all the entities and relationships identified in steps 1 and 2. Use **##** as the list delimiter.\n\n4. When finished, output <|COMPLETE|>\n\n######################\n-Examples-\n######################\nExample 1:\n\nEntity_types: [person, technology, mission, organization, location]\nText:\nwhile Alex clenched his jaw, the buzz of frustration dull against the backdrop of Taylor\'s authoritarian certainty. It was this competitive undercurrent that kept him alert, the sense that his and Jordan\'s shared commitment to discovery was an unspoken rebellion against Cruz\'s narrowing vision of control and order.\n\nThen Taylor did something unexpected. They paused beside Jordan and, for a moment, observed the device with something akin to reverence. ¡°If this tech can be understood..." Taylor said, their voice quieter, "It could change the game for us. For all of us.¡±\n\nThe underlying dismissal earlier seemed to falter, replaced by a glimpse of reluctant respect for the gravity of what lay in their hands. Jordan looked up, and for a fleeting heartbeat, their eyes locked with Taylor\'s, a wordless clash of wills softening into an uneasy truce.\n\nIt was a small transformation, barely perceptible, but one that Alex noted with an inward nod. They had all been brought here by different paths\n################\nOutput:\n("entity"<|>"Alex"<|>"person"<|>"Alex is a character who experiences frustration and is observant of the dynamics among other characters.")##\n("entity"<|>"Taylor"<|>"person"<|>"Taylor is portrayed with authoritarian certainty and shows a moment of reverence towards a device, indicating a change in perspective.")##\n("entity"<|>"Jordan"<|>"person"<|>"Jordan shares a commitment to discovery and has a significant interaction with Taylor regarding a device.")##\n("entity"<|>"Cruz"<|>"person"<|>"Cruz is associated with a vision of control and order, influencing the dynamics among other characters.")##\n("entity"<|>"The Device"<|>"technology"<|>"The Device is central to the story, with potential game-changing implications, and is revered by Taylor.")##\n("relationship"<|>"Alex"<|>"Taylor"<|>"Alex is affected by Taylor\'s authoritarian certainty and observes changes in Taylor\'s attitude towards the device."<|>7)##\n("relationship"<|>"Alex"<|>"Jordan"<|>"Alex and Jordan share a commitment to discovery, which contrasts with Cruz\'s vision."<|>6)##\n("relationship"<|>"Taylor"<|>"Jordan"<|>"Taylor and Jordan interact directly regarding the device, leading to a moment of mutual respect and an uneasy truce."<|>8)##\n("relationship"<|>"Jordan"<|>"Cruz"<|>"Jordan\'s commitment to discovery is in rebellion against Cruz\'s vision of control and order."<|>5)##\n("relationship"<|>"Taylor"<|>"The Device"<|>"Taylor shows reverence towards the device, indicating its importance and potential impact."<|>9)<|COMPLETE|>\n#############################\nExample 2:\n\nEntity_types: [person, technology, mission, organization, location]\nText:\nThey were no longer mere operatives; they had become guardians of a threshold, keepers of a message from a realm beyond stars and stripes. This elevation in their mission could not be shackled by regulations and established protocols¡ªit demanded a new perspective, a new resolve.\n\nTension threaded through the dialogue of beeps and static as communications with Washington buzzed in the background. The team stood, a portentous air enveloping them. It was clear that the decisions they made in the ensuing hours could redefine humanity\'s place in the cosmos or condemn them to ignorance and potential peril.\n\nTheir connection to the stars solidified, the group moved to address the crystallizing warning, shifting from passive recipients to active participants. Mercer\'s latter instincts gained precedence¡ª the team\'s mandate had evolved, no longer solely to observe and report but to interact and prepare. A metamorphosis had begun, and Operation: Dulce hummed with the newfound frequency of their daring, a tone set not by the earthly\n#############\nOutput:\n("entity"<|>"Washington"<|>"location"<|>"Washington is a location where communications are being received, indicating its importance in the decision-making process.")##\n("entity"<|>"Operation: Dulce"<|>"mission"<|>"Operation: Dulce is described as a mission that has evolved to interact and prepare, indicating a significant shift in objectives and activities.")##\n("entity"<|>"The team"<|>"organization"<|>"The team is portrayed as a group of individuals who have transitioned from passive observers to active participants in a mission, showing a dynamic change in their role.")##\n("relationship"<|>"The team"<|>"Washington"<|>"The team receives communications from Washington, which influences their decision-making process."<|>7)##\n("relationship"<|>"The team"<|>"Operation: Dulce"<|>"The team is directly involved in Operation: Dulce, executing its evolved objectives and activities."<|>9)<|COMPLETE|>\n#############################\nExample 3:\n\nEntity_types: [person, role, technology, organization, event, location, concept]\nText:\ntheir voice slicing through the buzz of activity. "Control may be an illusion when facing an intelligence that literally writes its own rules," they stated stoically, casting a watchful eye over the flurry of data.\n\n"It\'s like it\'s learning to communicate," offered Sam Rivera from a nearby interface, their youthful energy boding a mix of awe and anxiety. "This gives talking to strangers\' a whole new meaning."\n\nAlex surveyed his team¡ªeach face a study in concentration, determination, and not a small measure of trepidation. "This might well be our first contact," he acknowledged, "And we need to be ready for whatever answers back."\n\nTogether, they stood on the edge of the unknown, forging humanity\'s response to a message from the heavens. The ensuing silence was palpable¡ªa collective introspection about their role in this grand cosmic play, one that could rewrite human history.\n\nThe encrypted dialogue continued to unfold, its intricate patterns showing an almost uncanny anticipation\n#############\nOutput:\n("entity"<|>"Sam Rivera"<|>"person"<|>"Sam Rivera is a member of a team working on communicating with an unknown intelligence, showing a mix of awe and anxiety.")##\n("entity"<|>"Alex"<|>"person"<|>"Alex is the leader of a team attempting first contact with an unknown intelligence, acknowledging the significance of their task.")##\n("entity"<|>"Control"<|>"concept"<|>"Control refers to the ability to manage or govern, which is challenged by an intelligence that writes its own rules.")##\n("entity"<|>"Intelligence"<|>"concept"<|>"Intelligence here refers to an unknown entity capable of writing its own rules and learning to communicate.")##\n("entity"<|>"First Contact"<|>"event"<|>"First Contact is the potential initial communication between humanity and an unknown intelligence.")##\n("entity"<|>"Humanity\'s Response"<|>"event"<|>"Humanity\'s Response is the collective action taken by Alex\'s team in response to a message from an unknown intelligence.")##\n("relationship"<|>"Sam Rivera"<|>"Intelligence"<|>"Sam Rivera is directly involved in the process of learning to communicate with the unknown intelligence."<|>9)##\n("relationship"<|>"Alex"<|>"First Contact"<|>"Alex leads the team that might be making the First Contact with the unknown intelligence."<|>10)##\n("relationship"<|>"Alex"<|>"Humanity\'s Response"<|>"Alex and his team are the key figures in Humanity\'s Response to the unknown intelligence."<|>8)##\n("relationship"<|>"Control"<|>"Intelligence"<|>"The concept of Control is challenged by the Intelligence that writes its own rules."<|>7)<|COMPLETE|>\n#############################\n-Real Data-\n######################\nEntity_types: organization,person,geo,event\nText: layers. The encoder processes the input sequence and generates a set of attention-weighted vectors, while the decoder uses these vectors, along with the previously generated outputs, to produce the final sequence. Each layer in the encoder and decoder contains sub-layers, including multi-head self-attention mechanisms and position-wise fully connected feed-forward networks, followed by layer normalization and residual connections. This design allows the transformer to process entire sequences at once rather than step-by-step, making it highly parallelizable and efficient for training on large datasets.\n\nApplications of Transformer Neural Networks\nTransformers have revolutionized various applications across different domains. In NLP, they power models like BERT (Bidirectional Encoder Representations from Transformers), GPT (Generative Pre-trained Transformer), and T5 (Text-to-Text Transfer Transformer), which excel in tasks such as text classification, machine translation, question answering, and text generation. Beyond NLP, transformers have also shown remarkable performance in computer vision with models like Vision Transformer (ViT), which treats images as sequences of patches, similar to words in a sentence. Additionally, transformers are being explored in areas such as speech recognition, protein folding, and reinforcement learning, demonstrating their versatility and robustness in handling diverse types of data. The ability to process long-range dependencies and capture intricate patterns has made transformers indispensable in advancing the state of the art in many machine learning tasks.\n\nChallenges and Limitations\nDespite their success, transformer neural networks come with several challenges and limitations. One of the\n######################\nOutput:'}
+16:21:33,55 httpx INFO HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+16:21:33,57 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 1 retries took 32.26600000000053. input_tokens=2234, output_tokens=430
+16:21:47,709 httpx INFO HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+16:21:47,712 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 1 retries took 47.0619999999999. input_tokens=2234, output_tokens=786
+16:21:58,599 httpx INFO HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+16:21:58,600 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 1 retries took 57.96900000000005. input_tokens=2234, output_tokens=1123
+16:21:58,929 httpx INFO HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+16:21:58,929 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 1 retries took 58.45300000000043. input_tokens=2234, output_tokens=1135
+16:21:58,942 datashaper.workflow.workflow INFO executing verb snapshot
+16:21:58,942 datashaper.workflow.workflow INFO executing verb merge_graphs
+16:21:58,961 datashaper.workflow.workflow INFO executing verb snapshot_rows
+16:21:58,961 graphrag.index.emit.parquet_table_emitter INFO emitting parquet table create_base_extracted_entities.parquet
+16:21:59,123 graphrag.index.run INFO Running workflow: create_summarized_entities...
+16:21:59,123 graphrag.index.run INFO dependencies for create_summarized_entities: ['create_base_extracted_entities']
+16:21:59,123 graphrag.index.run INFO read table from storage: create_base_extracted_entities.parquet
+16:21:59,143 datashaper.workflow.workflow INFO executing verb summarize_descriptions
+16:22:01,210 httpx INFO HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+16:22:01,211 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 2.0. input_tokens=159, output_tokens=35
+16:22:01,990 httpx INFO HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+16:22:01,990 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 2.7960000000002765. input_tokens=186, output_tokens=62
+16:22:02,143 httpx INFO HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+16:22:02,144 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 2.969000000000051. input_tokens=201, output_tokens=73
+16:22:02,432 httpx INFO HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+16:22:02,432 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.219000000000051. input_tokens=218, output_tokens=75
+16:22:02,640 httpx INFO HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+16:22:02,641 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.438000000000102. input_tokens=149, output_tokens=44
+16:22:03,652 httpx INFO HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+16:22:03,652 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 4.467999999999847. input_tokens=181, output_tokens=48
+16:22:04,82 httpx INFO HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+16:22:04,83 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 4.890000000000327. input_tokens=179, output_tokens=54
+16:22:04,339 httpx INFO HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+16:22:04,340 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 5.155999999999949. input_tokens=168, output_tokens=73
+16:22:04,392 httpx INFO HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+16:22:04,392 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 5.203000000000429. input_tokens=170, output_tokens=54
+16:22:05,466 httpx INFO HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+16:22:05,466 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 6.280999999999949. input_tokens=176, output_tokens=57
+16:22:05,466 httpx INFO HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+16:22:05,466 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 6.265999999999622. input_tokens=149, output_tokens=40
+16:22:06,126 httpx INFO HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+16:22:06,126 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 6.936999999999898. input_tokens=166, output_tokens=46
+16:22:06,332 httpx INFO HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+16:22:06,334 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 7.140000000000327. input_tokens=161, output_tokens=58
+16:22:07,634 httpx INFO HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+16:22:07,636 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 8.42199999999957. input_tokens=177, output_tokens=59
+16:22:08,384 httpx INFO HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+16:22:08,386 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 9.20300000000043. input_tokens=207, output_tokens=87
+16:22:08,539 httpx INFO HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+16:22:08,540 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 9.32799999999952. input_tokens=189, output_tokens=62
+16:22:08,888 httpx INFO HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+16:22:08,889 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 9.688000000000102. input_tokens=201, output_tokens=86
+16:22:09,648 httpx INFO HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+16:22:09,649 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 10.438000000000102. input_tokens=147, output_tokens=34
+16:22:09,875 httpx INFO HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+16:22:09,876 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 10.67199999999957. input_tokens=146, output_tokens=44
+16:22:10,484 httpx INFO HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+16:22:10,485 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 11.280999999999949. input_tokens=236, output_tokens=85
+16:22:10,806 httpx INFO HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+16:22:10,807 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 11.594000000000051. input_tokens=183, output_tokens=58
+16:22:11,430 httpx INFO HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+16:22:11,432 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 12.219000000000051. input_tokens=203, output_tokens=58
+16:22:12,124 httpx INFO HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+16:22:12,125 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 12.92199999999957. input_tokens=183, output_tokens=79
+16:22:12,141 datashaper.workflow.workflow INFO executing verb snapshot_rows
+16:22:12,147 graphrag.index.emit.parquet_table_emitter INFO emitting parquet table create_summarized_entities.parquet
+16:22:12,293 graphrag.index.run INFO Running workflow: create_base_entity_graph...
+16:22:12,293 graphrag.index.run INFO dependencies for create_base_entity_graph: ['create_summarized_entities']
+16:22:12,294 graphrag.index.run INFO read table from storage: create_summarized_entities.parquet
+16:22:12,309 datashaper.workflow.workflow INFO executing verb cluster_graph
+16:22:12,338 datashaper.workflow.workflow INFO executing verb snapshot_rows
+16:22:12,346 datashaper.workflow.workflow INFO executing verb snapshot_rows
+16:22:12,354 datashaper.workflow.workflow INFO executing verb select
+16:22:12,359 graphrag.index.emit.parquet_table_emitter INFO emitting parquet table create_base_entity_graph.parquet
+16:22:12,518 graphrag.index.run INFO Running workflow: create_final_entities...
+16:22:12,518 graphrag.index.run INFO dependencies for create_final_entities: ['create_base_entity_graph']
+16:22:12,519 graphrag.index.run INFO read table from storage: create_base_entity_graph.parquet
+16:22:12,534 datashaper.workflow.workflow INFO executing verb unpack_graph
+16:22:12,542 datashaper.workflow.workflow INFO executing verb rename
+16:22:12,553 datashaper.workflow.workflow INFO executing verb select
+16:22:12,560 datashaper.workflow.workflow INFO executing verb dedupe
+16:22:12,567 datashaper.workflow.workflow INFO executing verb rename
+16:22:12,572 datashaper.workflow.workflow INFO executing verb filter
+16:22:12,594 datashaper.workflow.workflow INFO executing verb text_split
+16:22:12,601 datashaper.workflow.workflow INFO executing verb drop
+16:22:12,612 datashaper.workflow.workflow INFO executing verb merge
+16:22:12,635 datashaper.workflow.workflow INFO executing verb text_embed
+16:22:12,639 graphrag.llm.openai.create_openai_client INFO Creating OpenAI client base_url=http://localhost:11434/api
+16:22:12,788 graphrag.index.llm.load_llm INFO create TPM/RPM limiter for nomic-embed-text: TPM=0, RPM=0
+16:22:12,788 graphrag.index.llm.load_llm INFO create concurrency limiter for nomic-embed-text: 25
+16:22:12,794 graphrag.index.verbs.text.embed.strategies.openai INFO embedding 125 inputs via 125 snippets using 8 batches. max_batch_size=16, max_tokens=8191
+16:22:13,347 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:13,358 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:13,369 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:13,379 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:13,392 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:13,404 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:13,417 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:13,427 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:13,438 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:13,448 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:13,458 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:13,468 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:13,480 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:13,490 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:13,501 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:13,511 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:13,512 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 0.7190000000000509. input_tokens=543, output_tokens=0
+16:22:13,532 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:13,541 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:13,551 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:13,561 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:13,571 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:13,581 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:13,592 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:13,605 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:13,615 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:13,634 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:13,645 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:13,655 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:13,668 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:13,678 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:13,688 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:13,699 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:13,699 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 0.18699999999989814. input_tokens=461, output_tokens=0
+16:22:13,716 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:13,727 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:13,738 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:13,748 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:13,759 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:13,770 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:13,784 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:13,795 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:13,809 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:13,819 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:13,829 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:13,839 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:13,849 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:13,861 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:13,874 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:13,886 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:13,886 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 0.18800000000010186. input_tokens=686, output_tokens=0
+16:22:13,902 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:13,915 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:13,926 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:13,936 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:13,946 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:13,958 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:13,968 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:13,978 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:13,991 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,0 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,10 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,23 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,33 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,48 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,58 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,70 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,71 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 0.17199999999957072. input_tokens=489, output_tokens=0
+16:22:14,88 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,98 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,108 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,119 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,129 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,139 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,150 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,160 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,171 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,182 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,193 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,202 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,214 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,225 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,235 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,247 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,248 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 0.17199999999957072. input_tokens=292, output_tokens=0
+16:22:14,263 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,273 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,282 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,291 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,302 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,314 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,325 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,336 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,347 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,358 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,368 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,378 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,388 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,398 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,411 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,420 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,421 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 0.1720000000004802. input_tokens=548, output_tokens=0
+16:22:14,456 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,466 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,477 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,487 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,501 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,512 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,523 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,533 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,553 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,564 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,575 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,585 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,596 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,596 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 0.17199999999957072. input_tokens=400, output_tokens=0
+16:22:14,613 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,623 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,633 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,644 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,657 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,671 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,684 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,695 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,706 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,717 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,730 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,740 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,751 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,761 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,771 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,782 httpx INFO HTTP Request: POST http://127.0.0.1:11434/api/embeddings "HTTP/1.1 200 OK"
+16:22:14,783 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 0.18699999999989814. input_tokens=496, output_tokens=0
+16:22:14,809 datashaper.workflow.workflow INFO executing verb drop
+16:22:14,822 datashaper.workflow.workflow INFO executing verb filter
+16:22:14,834 graphrag.index.emit.parquet_table_emitter INFO emitting parquet table create_final_entities.parquet
+16:22:15,18 graphrag.index.run INFO Running workflow: create_final_nodes...
+16:22:15,18 graphrag.index.run INFO dependencies for create_final_nodes: ['create_base_entity_graph']
+16:22:15,18 graphrag.index.run INFO read table from storage: create_base_entity_graph.parquet
+16:22:15,39 datashaper.workflow.workflow INFO executing verb layout_graph
+16:22:15,69 datashaper.workflow.workflow INFO executing verb unpack_graph
+16:22:15,85 datashaper.workflow.workflow INFO executing verb unpack_graph
+16:22:15,98 datashaper.workflow.workflow INFO executing verb drop
+16:22:15,110 datashaper.workflow.workflow INFO executing verb filter
+16:22:15,135 datashaper.workflow.workflow INFO executing verb select
+16:22:15,143 datashaper.workflow.workflow INFO executing verb snapshot
+16:22:15,160 datashaper.workflow.workflow INFO executing verb rename
+16:22:15,168 datashaper.workflow.workflow INFO executing verb join
+16:22:15,185 datashaper.workflow.workflow INFO executing verb convert
+16:22:15,223 datashaper.workflow.workflow INFO executing verb rename
+16:22:15,223 graphrag.index.emit.parquet_table_emitter INFO emitting parquet table create_final_nodes.parquet
+16:22:15,398 graphrag.index.run INFO Running workflow: create_final_communities...
+16:22:15,398 graphrag.index.run INFO dependencies for create_final_communities: ['create_base_entity_graph']
+16:22:15,398 graphrag.index.run INFO read table from storage: create_base_entity_graph.parquet
+16:22:15,425 datashaper.workflow.workflow INFO executing verb unpack_graph
+16:22:15,440 datashaper.workflow.workflow INFO executing verb unpack_graph
+16:22:15,456 datashaper.workflow.workflow INFO executing verb aggregate_override
+16:22:15,470 datashaper.workflow.workflow INFO executing verb join
+16:22:15,487 datashaper.workflow.workflow INFO executing verb join
+16:22:15,503 datashaper.workflow.workflow INFO executing verb concat
+16:22:15,517 datashaper.workflow.workflow INFO executing verb filter
+16:22:15,546 datashaper.workflow.workflow INFO executing verb aggregate_override
+16:22:15,562 datashaper.workflow.workflow INFO executing verb join
+16:22:15,591 datashaper.workflow.workflow INFO executing verb filter
+16:22:15,620 datashaper.workflow.workflow INFO executing verb fill
+16:22:15,631 datashaper.workflow.workflow INFO executing verb merge
+16:22:15,647 datashaper.workflow.workflow INFO executing verb copy
+16:22:15,661 datashaper.workflow.workflow INFO executing verb select
+16:22:15,665 graphrag.index.emit.parquet_table_emitter INFO emitting parquet table create_final_communities.parquet
+16:22:15,832 graphrag.index.run INFO Running workflow: join_text_units_to_entity_ids...
+16:22:15,836 graphrag.index.run INFO dependencies for join_text_units_to_entity_ids: ['create_final_entities']
+16:22:15,836 graphrag.index.run INFO read table from storage: create_final_entities.parquet
+16:22:15,871 datashaper.workflow.workflow INFO executing verb select
+16:22:15,885 datashaper.workflow.workflow INFO executing verb unroll
+16:22:15,902 datashaper.workflow.workflow INFO executing verb aggregate_override
+16:22:15,907 graphrag.index.emit.parquet_table_emitter INFO emitting parquet table join_text_units_to_entity_ids.parquet
+16:22:16,81 graphrag.index.run INFO Running workflow: create_final_relationships...
+16:22:16,81 graphrag.index.run INFO dependencies for create_final_relationships: ['create_final_nodes', 'create_base_entity_graph']
+16:22:16,81 graphrag.index.run INFO read table from storage: create_final_nodes.parquet
+16:22:16,88 graphrag.index.run INFO read table from storage: create_base_entity_graph.parquet
+16:22:16,117 datashaper.workflow.workflow INFO executing verb unpack_graph
+16:22:16,134 datashaper.workflow.workflow INFO executing verb filter
+16:22:16,166 datashaper.workflow.workflow INFO executing verb rename
+16:22:16,181 datashaper.workflow.workflow INFO executing verb filter
+16:22:16,213 datashaper.workflow.workflow INFO executing verb drop
+16:22:16,229 datashaper.workflow.workflow INFO executing verb compute_edge_combined_degree
+16:22:16,246 datashaper.workflow.workflow INFO executing verb convert
+16:22:16,276 datashaper.workflow.workflow INFO executing verb convert
+16:22:16,281 graphrag.index.emit.parquet_table_emitter INFO emitting parquet table create_final_relationships.parquet
+16:22:16,476 graphrag.index.run INFO Running workflow: join_text_units_to_relationship_ids...
+16:22:16,476 graphrag.index.run INFO dependencies for join_text_units_to_relationship_ids: ['create_final_relationships']
+16:22:16,477 graphrag.index.run INFO read table from storage: create_final_relationships.parquet
+16:22:16,511 datashaper.workflow.workflow INFO executing verb select
+16:22:16,529 datashaper.workflow.workflow INFO executing verb unroll
+16:22:16,548 datashaper.workflow.workflow INFO executing verb aggregate_override
+16:22:16,569 datashaper.workflow.workflow INFO executing verb select
+16:22:16,575 graphrag.index.emit.parquet_table_emitter INFO emitting parquet table join_text_units_to_relationship_ids.parquet
+16:22:16,770 graphrag.index.run INFO Running workflow: create_final_community_reports...
+16:22:16,770 graphrag.index.run INFO dependencies for create_final_community_reports: ['create_final_nodes', 'create_final_relationships']
+16:22:16,771 graphrag.index.run INFO read table from storage: create_final_nodes.parquet
+16:22:16,775 graphrag.index.run INFO read table from storage: create_final_relationships.parquet
+16:22:16,812 datashaper.workflow.workflow INFO executing verb prepare_community_reports_nodes
+16:22:16,832 datashaper.workflow.workflow INFO executing verb prepare_community_reports_edges
+16:22:16,852 datashaper.workflow.workflow INFO executing verb restore_community_hierarchy
+16:22:16,873 datashaper.workflow.workflow INFO executing verb prepare_community_reports
+16:22:16,874 graphrag.index.verbs.graph.report.prepare_community_reports INFO Number of nodes at level=0 => 125
+16:22:16,908 datashaper.workflow.workflow INFO executing verb create_community_reports
+16:22:33,481 httpx INFO HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+16:22:33,481 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 16.561999999999898. input_tokens=2444, output_tokens=562
+16:22:33,569 httpx INFO HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+16:22:33,569 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 16.64099999999962. input_tokens=2483, output_tokens=551
+16:22:33,581 datashaper.workflow.workflow INFO executing verb window
+16:22:33,591 graphrag.index.emit.parquet_table_emitter INFO emitting parquet table create_final_community_reports.parquet
+16:22:33,787 graphrag.index.run INFO Running workflow: create_final_text_units...
+16:22:33,787 graphrag.index.run INFO dependencies for create_final_text_units: ['create_base_text_units', 'join_text_units_to_entity_ids', 'join_text_units_to_relationship_ids']
+16:22:33,788 graphrag.index.run INFO read table from storage: create_base_text_units.parquet
+16:22:33,791 graphrag.index.run INFO read table from storage: join_text_units_to_entity_ids.parquet
+16:22:33,793 graphrag.index.run INFO read table from storage: join_text_units_to_relationship_ids.parquet
+16:22:33,823 datashaper.workflow.workflow INFO executing verb select
+16:22:33,843 datashaper.workflow.workflow INFO executing verb rename
+16:22:33,863 datashaper.workflow.workflow INFO executing verb join
+16:22:33,884 datashaper.workflow.workflow INFO executing verb join
+16:22:33,904 datashaper.workflow.workflow INFO executing verb aggregate_override
+16:22:33,924 datashaper.workflow.workflow INFO executing verb select
+16:22:33,939 graphrag.index.emit.parquet_table_emitter INFO emitting parquet table create_final_text_units.parquet
+16:22:34,156 graphrag.index.run INFO Running workflow: create_base_documents...
+16:22:34,156 graphrag.index.run INFO dependencies for create_base_documents: ['create_final_text_units']
+16:22:34,156 graphrag.index.run INFO read table from storage: create_final_text_units.parquet
+16:22:34,196 datashaper.workflow.workflow INFO executing verb unroll
+16:22:34,216 datashaper.workflow.workflow INFO executing verb select
+16:22:34,237 datashaper.workflow.workflow INFO executing verb rename
+16:22:34,257 datashaper.workflow.workflow INFO executing verb join
+16:22:34,279 datashaper.workflow.workflow INFO executing verb aggregate_override
+16:22:34,297 datashaper.workflow.workflow INFO executing verb join
+16:22:34,318 datashaper.workflow.workflow INFO executing verb rename
+16:22:34,338 datashaper.workflow.workflow INFO executing verb convert
+16:22:34,378 graphrag.index.emit.parquet_table_emitter INFO emitting parquet table create_base_documents.parquet
+16:22:34,610 graphrag.index.run INFO Running workflow: create_final_documents...
+16:22:34,610 graphrag.index.run INFO dependencies for create_final_documents: ['create_base_documents']
+16:22:34,610 graphrag.index.run INFO read table from storage: create_base_documents.parquet
+16:22:34,650 datashaper.workflow.workflow INFO executing verb rename
+16:22:34,650 graphrag.index.emit.parquet_table_emitter INFO emitting parquet table create_final_documents.parquet
