@@ -1,3 +1,5 @@
+# Implementation of CSCI5120 project
+
 # 1. GraphRAG-Ollama
 
 For more details on the GraphRAG implementation, please refer to the [GraphRAG paper](https://arxiv.org/pdf/2404.16130).
